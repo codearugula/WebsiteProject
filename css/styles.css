@@ -342,3 +342,60 @@ a {
 .media__image {
   margin: 1.5rem 2.5rem;
 }
+
+/*Quote */
+
+.quote {
+  font-size: 3rem;
+  color: #5c5577;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 4rem;
+}
+
+.quote p {
+  margin-bottom: 3rem;
+}
+
+.quote p::after {
+  content: close-quote;
+}
+
+.quote p::before {
+  content: open-quote;
+}
+
+.quote__name {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 3rem;
+  margin: 10px 0 0 0;
+}
+
+.quote__footer {
+  margin-left: 20px;
+}
+
+.quote__place {
+  font-size: 2rem;
+  opacity: 0.4;
+  color: var(--color-headings);
+}
+
+/*Grid */
+
+.grid {
+  display: grid;
+}
+
+@media screen and (min-width: 768px) {
+  .grid--1x2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .grid--1x3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
