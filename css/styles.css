@@ -4,7 +4,9 @@
   --color-accent: #ff3400;
   --color-headings: #1b0760;
   --color-body: #918ca4;
+  --color-body-darker: #5c5577;
   --color-border: #ccc;
+  --border-radius: 30px;
 }
 
 *,
@@ -64,7 +66,7 @@ p {
   }
 
   h3 {
-    font-size: 1.4rem;
+    font-size: 2.4rem;
   }
 }
 
@@ -117,6 +119,7 @@ a {
 
 .badge--small {
   font-size: 1.6rem;
+  padding: 0.5rem 1.5rem;
 }
 
 @media screen and (min-width: 1024px) {
@@ -161,12 +164,17 @@ a {
   height: 40px;
 }
 
+.icon--small {
+  width: 30px;
+  height: 30px;
+}
+
 .icon--primary {
   fill: var(--color-primary);
 }
 
 .icon--white {
-  fill: white;
+  fill: #fff;
 }
 
 .icon-container {
@@ -180,7 +188,7 @@ a {
 }
 
 .icon-container--accent {
-  background-color: var(--color-accent);
+  background: var(--color-accent);
 }
 
 /* Buttons */
@@ -235,6 +243,11 @@ a {
   color: #fff;
 }
 
+.btn--stretched {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
 .btn--block {
   width: 100%;
   display: inline-block;
@@ -246,11 +259,10 @@ a {
   }
 }
 
-/*Input*/
-
+/* Inputs */
 .input {
-  border-radius: 30px;
-  border: var(--color-border);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
   color: var(--color-headings);
   font-size: 2rem;
   outline: 0;
@@ -261,35 +273,31 @@ a {
   color: #cdcbd7;
 }
 
-@media screen and (min-width: 1024px) {
-  .input {
-    font-size: 1.5rem;
-  }
+.input-group {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  display: flex;
 }
 
-.input-container .input {
+.input-group .input {
   border: 0;
   flex-grow: 1;
   padding: 1.5rem 1rem;
 }
 
-.input-container .btn {
+.input-group .btn {
   margin: 4px;
 }
 
-.input-container {
-  display: flex;
-  box-shadow: 0 0 8px lightgray;
-  border-radius: 30px;
-  border: 1px solid var(--color-border);
+@media screen and (min-width: 1024px) {
+  .input {
+    font-size: 1.5rem;
+  }
 }
-
-/*Card*/
-
+/* Cards */
 .card {
-  margin: 5px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px 10px var(--color-border);
+  border-radius: 7px;
+  box-shadow: 0 0 20px 10px #f3f3f3;
   overflow: hidden;
 }
 
@@ -299,47 +307,80 @@ a {
 }
 
 .card--primary .card__header {
-  background-color: var(--color-primary);
+  background: var(--color-primary);
   color: #fff;
 }
 
 .card--secondary .card__header {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   color: #fff;
 }
 
-.card__header__price {
-  font-size: 5rem;
+.card--secondary .badge--secondary {
+  background: #02cdf1;
 }
 
-.card__header__period {
-  font-size: 1.6rem;
+/* Plans */
+.plan__name {
+  color: #fff;
+  margin: 0;
+  font-weight: 500;
+  font-size: 2.4rem;
 }
 
-.card__header__type {
-  color: #a8ceff;
-  font-size: 1.5rem;
+.plan__price {
+  font-size: 6rem;
 }
 
-.card--primary .badge--primary {
-  background-color: var(--color-headings);
+.plan__billing-cycle {
+  font-size: 2.4rem;
+  font-weight: 300;
+  opacity: 0.8;
+  margin-right: 1rem;
 }
 
-.plan--popular .card__header::before {
-  content: url(../images/popular.svg);
-  width: 30px;
-  position: absolute;
-  display: inline-block;
-  top: -6px;
-  right: 5%;
+.plan__description {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  display: block;
+}
+
+.plan .list__item {
+  margin-bottom: 2rem;
 }
 
 .plan--popular .card__header {
   position: relative;
 }
 
-/*Media*/
+.plan--popular .card__header::before {
+  content: url(../images/popular.svg);
+  width: 40px;
+  display: inline-block;
+  position: absolute;
+  top: -6px;
+  right: 5%;
+}
 
+@media screen and (min-width: 1024px) {
+  .plan__name {
+    font-size: 1.4rem;
+  }
+
+  .plan__price {
+    font-size: 5rem;
+  }
+
+  .plan__billing-cycle {
+    font-size: 1.6rem;
+  }
+
+  .plan__description {
+    font-size: 1.7rem;
+  }
+}
+/* Media */
 .media {
   display: flex;
 }
@@ -348,100 +389,152 @@ a {
   margin-top: 0;
 }
 
-.media__image {
-  margin: 1.5rem 2.5rem;
+.media__body {
+  margin: 0 2rem;
 }
 
-/*Quote */
-
+.media__image {
+  margin-top: 1rem;
+}
+/* Quotes */
 .quote {
   font-size: 3rem;
-  color: #5c5577;
   font-style: italic;
-  font-weight: 500;
-  line-height: 4rem;
+  color: var(--color-body-darker);
+  line-height: 1.3;
 }
 
-.quote p {
-  margin-bottom: 3rem;
-}
-
-.quote p::after {
-  content: close-quote;
-}
-
-.quote p::before {
+.quote__text::before {
   content: open-quote;
 }
 
-.quote__name {
-  font-family: Montserrat;
-  font-weight: 600;
+.quote__text::after {
+  content: close-quote;
+}
+
+.quote__author {
   font-size: 3rem;
-  margin: 10px 0 0 0;
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 0;
 }
 
-.quote__footer {
-  margin-left: 20px;
-}
-
-.quote__place {
-  font-size: 2rem;
-  opacity: 0.4;
+.quote__organization {
   color: var(--color-headings);
+  opacity: 0.4;
+  font-size: 2rem;
+  font-style: normal;
 }
 
-/*Grid */
+.quote__line {
+  position: relative;
+  bottom: 10px;
+}
 
+@media screen and (min-width: 1024px) {
+  .quote {
+    font-size: 2rem;
+  }
+
+  .quote__author {
+    font-size: 2.4rem;
+  }
+
+  .quote__organization {
+    font-size: 1.6rem;
+  }
+}
+
+/* Grids */
 .grid {
   display: grid;
 }
 
 @media screen and (min-width: 768px) {
   .grid--1x2 {
-    grid-template-columns: 0.8fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (min-width: 1024px) {
   .grid--1x3 {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/*Testimonial*/
-
-.card__image-container {
-  display: grid;
-  align-items: center;
-}
-
-img {
-  width: 100%;
-}
-
+/* Testimonials */
 .testimonial {
   padding: 3rem;
 }
-.testimonial__quote {
-  margin-left: 6rem;
-  display: grid;
-  justify-content: center;
-}
 
-.testimonial__image_container {
+.testimonial__image {
   position: relative;
+  margin: 0 3rem;
 }
 
-.testimonial__image_container__quotes {
+.testimonial__image > img {
+  width: 100%;
+}
+
+.testimonial__image > .icon-container {
   position: absolute;
   top: 3rem;
   right: -32px;
 }
 
 @media screen and (min-width: 768px) {
+  .testimonial__image {
+    margin: 0;
+  }
+
   .testimonial .quote,
-  .testimonial .quote__name {
+  .testimonial .quote__author {
     font-size: 2.4rem;
+  }
+
+  .testimonial .quote {
+    margin-left: 6rem;
+    margin-right: 0;
+  }
+}
+
+/* Callouts */
+.callout {
+  padding: 4rem;
+  border-radius: 5px;
+}
+
+.callout--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.callout__heading {
+  color: #fff;
+  margin-top: 0;
+  font-size: 3rem;
+}
+
+.callout .btn {
+  justify-self: center;
+  align-self: center;
+}
+
+.callout__content {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .callout .grid--1x2 {
+    grid-template-columns: 1fr auto;
+  }
+
+  .callout__content {
+    text-align: left;
+  }
+
+  .callout .btn {
+    justify-self: start;
+    margin: 0 2rem;
   }
 }
