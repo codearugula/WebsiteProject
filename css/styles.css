@@ -539,37 +539,134 @@ a {
   }
 }
 
-/* Collapsible */
-
-.collapsible header {
+/* Collapsibles */
+.collapsible__header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 
-.collapsible__h2 {
-  margin: 0;
+.collapsible__heading {
+  margin-top: 0;
   font-size: 3rem;
 }
 
 .collapsible__chevron {
   transform: rotate(-90deg);
-  transition: 0.3s;
+  transition: transform 0.3s;
 }
 
-.collapsible__footer {
+.collapsible__content {
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3s;
   opacity: 0;
+  transition: all 0.3s;
 }
 
 .collapsible--expanded .collapsible__chevron {
-  transform: none;
+  transform: rotate(0);
 }
 
-.collapsible--expanded .collapsible__footer {
-  display: block;
+.collapsible--expanded .collapsible__content {
   max-height: 100vh;
   opacity: 1;
+}
+/* Blocks */
+.block {
+  --padding-vertical: 6rem;
+  padding: var(--padding-vertical) 2rem;
+}
+
+.block__header {
+  text-align: center;
+}
+
+.block__heading {
+  margin-top: 0;
+}
+
+.block--dark {
+  background: #000;
+  color: #7b858b;
+}
+
+.block--dark .block__heading {
+  color: #fff;
+}
+
+.block--skewed-right {
+  padding-bottom: calc(var(--padding-vertical) + 4rem);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%);
+}
+
+.block--skewed-left {
+  padding-bottom: calc(var(--padding-vertical) + 4rem);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Nav */
+
+.navbar {
+  background: black;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+  align-items: center;
+}
+
+.nav__list {
+  width: 100%;
+  color: white;
+  margin: 0;
+}
+
+.nav__list li {
+  border-bottom: 1px solid #222;
+}
+
+.nav__list a {
+  padding: 0.5rem 2rem;
+  color: white;
+}
+
+.nav__list a:hover {
+  color: grey;
+  transition: color 0.3s;
+}
+
+.nav__toggler {
+  opacity: 0.5;
+  transition: box-shadow 0.15s;
+  cursor: pointer;
+}
+
+.collapsible--expanded .nav__toggler {
+  opacity: 1;
+  box-shadow: 0 0 0 3px #666;
+  border-radius: 5px;
+}
+
+.nav__brand {
+  transform: translateY(5px);
+}
+
+@media screen and (min-width: 768px) {
+  .nav__toggler {
+    display: none;
+  }
+  .nav__list {
+    width: auto;
+    display: flex;
+    font-size: 1.6rem;
+    max-height: 100%;
+    opacity: 1;
+  }
+  .nav__list li {
+    border: 0;
+  }
 }
